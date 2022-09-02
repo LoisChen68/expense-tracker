@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const Record = require('../record')
 const User = require('../user')
+const Category = require('../category')
 const SEED_RECORD = require('./record.json')
 
 const db = require('../../config/mongoose')
@@ -12,6 +13,8 @@ const SEED_USER = require('./user.json')
 
 
 db.once('open', async () => {
+  const categories = await Category.find().lean()
+
   await Promise.all(SEED_USER.map(async user => {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(user.password, salt)
@@ -22,10 +25,12 @@ db.once('open', async () => {
     })
     await Promise.all(
       SEED_RECORD.map(async record => {
+        const categoryDate = categories.find(category => category.name === record.category_name)
         await Record.create({
           name: record.name,
           date: record.date,
           amount: record.amount,
+          category_id: categoryDate.id,
           user_id: userData._id
         })
       }))
