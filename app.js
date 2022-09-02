@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const hbs = require('express-handlebars')
+
 const app = express()
 mongoose.connect(process.env.MONGODB_URI)
 
@@ -16,8 +18,12 @@ db.once('open', () => {
 const port = 3000
 
 app.get('/', (req, res) => {
-  res.send('Declare war on the world.')
+  res.render('index')
 })
+
+app.engine('hbs', hbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
+
 
 app.listen(port, () => {
   console.log(`Express is running on the http://localhost:${port}`)
