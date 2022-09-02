@@ -4,6 +4,9 @@
   <li>
     {{this.name}}
     <a href="./records/{{this._id}}/edit">編輯</a>
+    <form action="./records/{{this._id}}/delete" method="POST" style="display: inline">
+      <button type="submit">刪除</button>
+    </form>
   </li>
   {{/each}}
 </ul>
