@@ -19,7 +19,11 @@ router.get('/:id/edit', (req, res) => {
   const _id = req.params.id
   return Record.findOne({ _id, user_id })
     .lean()
-    .then((record) => res.render('edit', { record }))
+    .then(record => {
+      const date = record.date.toJSON().slice(0, 10)
+      record.date = date
+      res.render('edit', { record })
+    })
     .catch(error => console.log(error))
 })
 
