@@ -9,9 +9,13 @@ router.get('/', (req, res) => {
     .lean()
     .then(records => {
 
+      let totalAmount = records.reduce((total, record) => {
+        return total + Number(record.amount)
+      }, 0)
+
       records.forEach(records => records.date = records.date.toLocaleDateString('zh-TW'))
 
-      res.render('index', { records }
+      res.render('index', { records, totalAmount }
       )
     })
     .catch(error => console.log(error))
