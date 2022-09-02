@@ -1,3 +1,4 @@
+const Record = require('./models/record')
 const express = require('express')
 const mongoose = require('mongoose')
 const hbs = require('express-handlebars')
@@ -18,7 +19,10 @@ db.once('open', () => {
 const port = 3000
 
 app.get('/', (req, res) => {
-  res.render('index')
+  Record.find()
+    .lean()
+    .then(records => res.render('index', { records }))
+    .catch(error => console.log(error))
 })
 
 app.engine('hbs', hbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
