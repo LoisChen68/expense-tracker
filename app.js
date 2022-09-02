@@ -21,6 +21,6 @@ app.use(methodOverride('_method'))
 
 app.use(routes)
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Express is running on the http://localhost:${PORT}`)
 })
