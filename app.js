@@ -3,15 +3,14 @@ const express = require('express')
 const methodOverride = require('method-override')
 
 const hbs = require('express-handlebars')
-const routes = require('./routes')
 
 const app = express()
+const port = 3000
 
+const routes = require('./routes')
 require('./config/mongoose')
 
-
-
-const port = 3000
+app.use(express.static('public'))
 
 app.use(express.urlencoded({ extended: true }))
 

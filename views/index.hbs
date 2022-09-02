@@ -13,7 +13,7 @@
           </td>
           <td>
           <td bgcolor="white" class="ps-1">
-            <form action="./expenses/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
               <button type="submit" class="btn btn-outline button-delete" onclick="return confirm('是否確定要刪除?')"><i
                   class="fa-solid fa-trash-can"></i></button>
             </form>
@@ -23,7 +23,7 @@
       </table>
     </div>
     <div class="d-grid gap-2 col-6 mx-auto">
-      <a href="./expenses/new" class="btn button3">新增支出</a>
+      <a href="./records/new" class="btn button3">新增支出</a>
     </div>
   </div>
 </div>

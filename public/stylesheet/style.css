@@ -1,0 +1,95 @@
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+
+  .example,
+  .th,
+  .td {
+    border: 1px solid black;
+  }
+
+  tr:nth-child(even) {
+    background-color: #ececec;
+  }
+
+  .required::after {
+    content: '*';
+    color: red;
+  }
+
+  .button-delete {
+    color: red;
+  }
+
+  .button1 {
+    color: orangered;
+    border: 1px solid orangered;
+  }
+
+  .button2 {
+    color: white;
+    border: 1px solid white;
+  }
+
+  .button2:hover,
+  .button2:focus,
+  .button2:active:hover {
+    color: rgb(255, 87, 25);
+    border-color: rgb(255, 87, 25);
+    ;
+  }
+
+  .button3 {
+    background-color: orangered;
+    color: white;
+    border: 1px solid black;
+  }
+
+
+  .btn-outline-primary-login {
+    font-size: 20px;
+    color: orangered;
+    background-color: white;
+    border-color: orangered;
+  }
+
+  .btn-outline-primary-login:hover,
+  .btn-outline-primary-login:focus,
+  .btn-outline-primary-login:active:hover {
+    color: white;
+    background-color: rgb(255, 87, 25);
+    border-color: rgb(255, 87, 25);
+    ;
+  }
+
+  .btn-outline-primary-facebook {
+    font-size: 20px;
+    color: #1877F2;
+    background-color: white;
+    border-color: #1877F2;
+  }
+
+  .btn-outline-primary-facebook:hover,
+  .btn-outline-primary-facebook:focus,
+  .btn-outline-primary-facebook:active:hover {
+    color: white;
+    background-color: #0058cc;
+    border-color: #0058cc;
+  }
+
+  .btn-outline-primary-register {
+    font-size: 20px;
+    color: white;
+    background-color: green;
+    border-color: green;
+  }
+
+  .btn-outline-primary-register:hover,
+  .btn-outline-primary-register:focus,
+  .btn-outline-primary-register:active:hover {
+    color: white;
+    background-color: rgb(0, 165, 0);
+    border-color: rgb(0, 165, 0);
+  }
