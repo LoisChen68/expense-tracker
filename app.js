@@ -1,5 +1,5 @@
-const Record = require('./models/record')
 const express = require('express')
+const session = require('express-session')
 const methodOverride = require('method-override')
 
 const hbs = require('express-handlebars')
@@ -16,6 +16,12 @@ app.use(express.urlencoded({ extended: true }))
 
 app.engine('hbs', hbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
+
+app.use(session({
+  secret: 'Secret',
+  resave: false,
+  saveUninitialized: true
+}))
 
 app.use(methodOverride('_method'))
 
