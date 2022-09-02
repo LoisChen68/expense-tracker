@@ -1,1 +1,56 @@
-<h2>login</h2>
+<div class="row mt-5">
+  <div class="col-md-4 m-auto ">
+    <div class="card card-body shadow p-3 mb-5 bg-body rounded">
+      <form action="/users/login" method="POST">
+        <table>
+          <div class="mb-3">
+            <tr>
+              <td>
+                <label for="email"><i class="fa-solid fa-envelope"></i></label>
+              </td>
+              <td>
+                <input type="email" id="email" name="email" class="form-control-plaintext" placeholder="電子郵件地址"
+                  required>
+              </td>
+            </tr>
+          </div>
+          <div class="mb-3">
+            <tr>
+              <td bgcolor="white">
+                <label for="password"><i class=" fa-solid fa-lock"></i></label>
+              </td>
+              <td bgcolor="white">
+                <input type="password" id="password" name="password" class="form-control-plaintext" placeholder="密碼"
+                  required>
+              </td>
+            </tr>
+          </div>
+        </table>
+        <div class="d-grid gap-2 mx-auto mt-3">
+          <button type="submit" class="btn btn-outline-primary-login fw-bold">登入</button>
+          <a href="/auth/facebook" class="btn btn-outline-primary-facebook fw-bold">Facebook登入</a>
+        </div>
+      </form>
+      <div class="mt-3">
+        <hr>
+      </div>
+      <div class="d-grid gap-2 mx-auto mt-1">
+        <a href="/users/register" class="btn btn-outline-primary-register fw-bold">建立新帳號</a>
+      </div>
+      <hr>
+      <table class="text-center ">
+        <tr>
+          <th class="text-center" colspan="2">範例帳號</th>
+        </tr>
+        <tr>
+          <td class="example" bgcolor="white" width="50%">帳號</td>
+          <td class="example" bgcolor="white">密碼</td>
+        </tr>
+        <tr>
+          <td class="example">user1@example.com</td>
+          <td class="example">12345678</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
