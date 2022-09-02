@@ -1,1 +1,62 @@
-<h2>register</h2>
+<div class="row mt-5">
+  <div class="col-md-4 m-auto ">
+    <div class="card card-body shadow p-3 mb-5 bg-body rounded">
+      <form action="/users/register" method="POST">
+        <table>
+          <div class="">
+            <tr>
+              <td>
+                <label for="name" class="required  mb-3"><i class="fa-solid fa-user"></i> 名稱</label>
+              </td>
+              <td>
+                <input type="name" id="name" name="name" class="form-control-plaintext mb-3" placeholder="姓名"
+                  value="{{name}}" required>
+              </td>
+          </div>
+          </tr>
+          <div class="mb-3">
+            <tr>
+              <td bgcolor="white">
+                <label for="email" class="required mb-3"><i class="fa-solid fa-envelope"></i> 帳號</label>
+              </td>
+              <td bgcolor="white">
+                <input type="email" id="email" name="email" class="form-control-plaintext mb-3" placeholder="電子郵件地址"
+                  value="{{email}}" required>
+              </td>
+            </tr>
+          </div>
+          <div class="mb-3">
+            <tr>
+              <td bgcolor="white">
+                <label for="password" class="required mb-3"><i class=" fa-solid fa-lock"></i> 密碼</label>
+              </td>
+              <td bgcolor="white">
+                <input type="password" id="password" name="password" class="form-control-plaintext mb-3"
+                  placeholder="密碼" value="{{password}}" required>
+              </td>
+            </tr>
+          </div>
+          <div class="mb-3">
+            <tr>
+              <td bgcolor="white">
+                <label for="confirmPassword" class="required mb-3"><i class=" fa-solid fa-lock"></i> 確認密碼</label>
+              </td>
+              <td bgcolor="white">
+                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control-plaintext mb-3"
+                  placeholder="確認密碼" required>
+              </td>
+            </tr>
+          </div>
+        </table>
+        <div class="d-grid gap-2 mx-auto col-5 mt-3">
+          <button type="submit" class="btn btn-outline-primary-register fw-bold">註冊帳號</button>
+        </div>
+      </form>
+      <div class="mt-3">
+        <hr>
+      </div>
+      <p class="mt-4">有帳號了 ? <a href="/users/login" class="btn btn-outline-primary-login fw-bold">登入</a></p>
+    </div>
+  </div>
+</div>
+</div>
