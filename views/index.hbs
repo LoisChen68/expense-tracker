@@ -1,12 +1,29 @@
-<a href="./records/new">新增支出</a>
-<ul>
-  {{#each records}}
-  <li>
-    {{this.name}}
-    <a href="./records/{{this._id}}/edit">編輯</a>
-    <form action="./records/{{this._id}}?_method=DELETE" method="POST" style="display: inline">
-      <button type="submit">刪除</button>
-    </form>
-  </li>
-  {{/each}}
-</ul>
+<div class="row mt-5">
+  <div class="col-md-5 m-auto">
+    <div class="card-body">
+      <p class="fw-bold fs-5">總金額：</p>
+      <p class="text-center fs-1" style="color:orangered">1000</p>
+      <table>
+        {{#each records}}
+        <tr>
+          <td>{{this.name}}<br>{{this.date}}</td>
+          <td class="ps-5 pe-2">{{this.amount}}</td>
+          <td bgcolor=" white" class="ps-5">
+            <a href="./records/{{this._id}}/edit" class=""><i class="fa-solid fa-pen" style="color:brown"></i></a>
+          </td>
+          <td>
+          <td bgcolor="white" class="ps-1">
+            <form action="./expenses/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+              <button type="submit" class="btn btn-outline button-delete" onclick="return confirm('是否確定要刪除?')"><i
+                  class="fa-solid fa-trash-can"></i></button>
+            </form>
+          </td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <a href="./expenses/new" class="btn button3">新增支出</a>
+    </div>
+  </div>
+</div>

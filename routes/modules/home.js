@@ -6,7 +6,13 @@ const Record = require('../../models/record')
 router.get('/', (req, res) => {
   Record.find()
     .lean()
-    .then(records => res.render('index', { records }))
+    .then(records => {
+
+      records.forEach(records => records.date = records.date.toLocaleDateString())
+
+      res.render('index', { records }
+      )
+    })
     .catch(error => console.log(error))
 })
 
