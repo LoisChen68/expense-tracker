@@ -1,6 +1,36 @@
 <form action="/records" method="POST">
-  <input type="text" placeholder="name" name="name" id="name">
-  <input type="date" name="date" id="date">
-  <input type="number" name="amount" id="amount" min="0">
-  <button type="submit">送出</button>
+  <div class="row mt-5">
+    <div class="col-md-5 m-auto">
+      <div class="card-body">
+        <p style="color:red">*必填欄位</p>
+        <p class="text-center h2 mb-5">請輸入你的支出</p>
+        <div class="row align-items-center mb-5 h3">
+          <label for="name" class="col-auto required">名稱</label>：
+          <div class="col-6">
+            <input type="text" name="name" id="name" class="form-control" required>
+          </div>
+        </div>
+        <div class="row align-items-center mb-5 h3">
+          <label for="date" class="col-auto required">日期</label>：
+          <div class="col-6">
+            <input type="date" name="date" id="date" class="form-control set-today" required>
+            <script type="text/javascript">
+              window.onload = function () {
+                document.querySelector('.set-today').value = (new Date()).toISOString().substr(0, 10)
+              }
+            </script>
+          </div>
+        </div>
+        <div class="row align-items-center mb-5 h3">
+          <label for="amount" class="col-auto required">金額</label>：
+          <div class="col-6">
+            <input type="number" min="1" name="amount" id="amount" class="form-control" required>
+          </div>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button type="submit" class="btn button1">新增支出</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
