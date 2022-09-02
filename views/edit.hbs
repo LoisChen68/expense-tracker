@@ -1,0 +1,7 @@
+<form action="/records/{{record._id}}/edit" method="POST">
+  <input type="text" placeholder="name" name="name" id="name" value="{{record.name}}">
+  <input type="date" name="date" id="date" value="{{record.date}}">
+  <input type="number" name="amount" id="amount" min="0" value="{{record.amount}}">
+  <button type="submit">儲存</button>
+  <a href="/">返回</a>
+</form>
