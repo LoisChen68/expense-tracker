@@ -29,9 +29,7 @@ db.once('open', async () => {
           user_id: userData._id
         })
       }))
-      .then(() => {
-        console.log('Record & User seed created.')
-        process.exit()
-      })
+    console.log('Record & User seed created.')
+    process.exit()
   }))
 })
