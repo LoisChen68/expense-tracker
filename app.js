@@ -1,8 +1,8 @@
 const Record = require('./models/record')
 const express = require('express')
+const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const hbs = require('express-handlebars')
-const record = require('./models/record')
 
 const app = express()
 mongoose.connect(process.env.MONGODB_URI)
@@ -23,6 +23,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.engine('hbs', hbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
+
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   Record.find()
@@ -50,7 +52,7 @@ app.get('/records/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/records/:id/edit', (req, res) => {
+app.put('/records/:id', (req, res) => {
   const id = req.params.id
   const { name, date, amount } = req.body
   return Record.findById(id)
@@ -65,7 +67,7 @@ app.post('/records/:id/edit', (req, res) => {
 })
 
 
-app.post('/records/:id/delete', (req, res) => {
+app.delete('/records/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())
