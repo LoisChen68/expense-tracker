@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     .lean()
     .then(records => {
 
-      records.forEach(records => records.date = records.date.toLocaleDateString())
+      records.forEach(records => records.date = records.date.toLocaleDateString('zh-TW'))
 
       res.render('index', { records }
       )
