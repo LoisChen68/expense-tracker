@@ -1,9 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
+const Category = require('../../models/category')
 
-router.get('/new', (req, res) => {
-  return res.render('new')
+
+router.get('/new', async (req, res) => {
+  const categories = await Category.find().lean()
+  return res.render('new', { categories })
 })
 
 router.post('/', (req, res) => {
@@ -14,7 +17,8 @@ router.post('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', async (req, res) => {
+  const categories = await Category.find().lean()
   const user_id = req.user._id
   const _id = req.params.id
   return Record.findOne({ _id, user_id })
@@ -22,7 +26,7 @@ router.get('/:id/edit', (req, res) => {
     .then(record => {
       const date = record.date.toJSON().slice(0, 10)
       record.date = date
-      res.render('edit', { record })
+      res.render('edit', { record, categories })
     })
     .catch(error => console.log(error))
 })

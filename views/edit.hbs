@@ -18,6 +18,17 @@
           </div>
         </div>
         <div class="row align-items-center mb-5 h3">
+          <label for="category" class="col-auto required ">類別</label>：
+          <div class="col-6">
+            <select class="form-select " name="category" id="category" aria-label="category"
+              value="{{record.category}}">
+              {{#each categories}}
+              <option value="{{this.name}}">{{this.name}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="row align-items-center mb-5 h3">
           <label for="amount" class="col-auto required">金額</label>：
           <div class="col-6">
             <input type="number" min="1" name="amount" id="amount" class="form-control" value="{{record.amount}}"
