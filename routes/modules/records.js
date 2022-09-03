@@ -24,6 +24,12 @@ router.get('/:id/edit', async (req, res) => {
   const categories = await Category.find().lean()
   const record = await Record.findOne({ _id, user_id }).populate('category_id').lean()
 
+  categories.map(categories => {
+    if (categories.name == record.category_id.name) {
+      categories.selected = 'selected'
+    }
+  })
+
   record.date = record.date.toJSON().slice(0, 10)
   res.render('edit', { record, categories })
 })

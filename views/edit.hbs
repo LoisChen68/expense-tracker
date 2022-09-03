@@ -22,7 +22,7 @@
           <div class="col-6">
             <select class="form-select " name="category" id="category" aria-label="category">
               {{#each categories}}
-              <option value="{{this.name}}">{{this.name}}</option>
+              <option value="{{this.name}}" {{this.selected}}>{{this.name}}</option>
               {{/each}}
             </select>
           </div>
