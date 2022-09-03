@@ -31,16 +31,11 @@ router.get('/:id/edit', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const user_id = req.user._id
   const _id = req.params.id
-  const { name, date, amount } = req.body
-  return Record.findOne({ _id, user_id })
-    .then(record => {
-      record.name = name
-      record.date = date
-      record.amount = amount
-      return record.save()
-    })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+  const { name, date, category, amount } = req.body
+  const categoryData = await Category.findOne({ name: category }).lean()
+  await Record.findOneAndUpdate({ _id, user_id }, { name, date, category_id: categoryData._id, amount })
+  res.redirect('/')
+
 })
 
 
