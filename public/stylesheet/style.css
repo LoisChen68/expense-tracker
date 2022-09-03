@@ -8,6 +8,7 @@
   .th,
   .td {
     border: 1px solid black;
+
   }
 
   tr:nth-child(even) {
@@ -20,6 +21,7 @@
   }
 
   .button-delete {
+    background-color: white;
     color: red;
   }
 

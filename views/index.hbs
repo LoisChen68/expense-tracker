@@ -25,19 +25,18 @@
         </div>
       </div>
       <p class="fw-bold fs-5">總金額：</p>
-      <p class="text-center fs-1" style="color:orangered">{{totalAmount}}</p>
+      <p class="text-center fs-1" style="color:orangered">${{totalAmount}}</p>
       <table>
         {{#each records}}
         <tr>
           <td width="10%"><i class="{{this.category_id.icon}} fa-2x ps-4" style="color: #61CECD "></i></td>
           <td>{{this.name}}<br>{{this.date}}</td>
-          <td class="ps-5 pe-2">{{this.amount}}</td>
-          <td bgcolor=" white" class="ps-5">
+          <td class="ps-5 pe-2">${{this.amount}}</td>
+          <td bgcolor="white" class="ps-5">
             <a href="./records/{{this._id}}/edit" class=""><i class="fa-solid fa-pen" style="color:brown"></i></a>
           </td>
-          <td>
           <td bgcolor="white" class="ps-1">
-            <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline">
               <button type="submit" class="btn btn-outline button-delete" onclick="return confirm('是否確定要刪除?')"><i
                   class="fa-solid fa-trash-can"></i></button>
             </form>
