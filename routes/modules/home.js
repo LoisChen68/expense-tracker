@@ -22,19 +22,33 @@ router.get('/', async (req, res) => {
 
 router.get('/category', async (req, res) => {
   const category = req.query.category
+  const sort = req.query.sort
+  const sortOption = {
+    amountDesc: { amount: 'desc' },
+    amountAsc: { amount: 'asc' },
+    dateDesc: { date: 'desc' },
+    dateAsc: { date: 'asc' }
+  }
   const categories = await Category.find().lean()
   const records = await Record
     .find({ user_id: req.user._id })
     .populate('category_id')
+    .sort(sortOption[sort])
     .lean()
 
   categories.map(categories => {
-    if (categories._id == category) {
+    if (categories.name == category) {
       categories.selected = 'selected'
     }
   })
 
-  const filterRecord = await records.filter(data => data.category_id._id.toString().includes(category))
+  let { amountDesc_selected, amountAsc_selected, dateDesc_selected, dateAsc_selected } = ''
+  if (sort === 'amountDesc') { amountDesc_selected = 'selected' }
+  if (sort === 'amountAsc') { amountAsc_selected = 'selected' }
+  if (sort === 'dateDesc') { dateDesc_selected = 'selected' }
+  if (sort === 'dateAsc') { dateAsc_selected = 'selected' }
+
+  const filterRecord = await records.filter(data => data.category_id.name.includes(category))
 
   let totalAmount = filterRecord.reduce((total, record) => {
     return total + Number(record.amount)
@@ -42,7 +56,7 @@ router.get('/category', async (req, res) => {
 
   records.forEach(records => records.date = records.date.toLocaleDateString('zh-TW'))
 
-  res.render('index', { records: filterRecord, totalAmount, categories })
+  res.render('index', { records: filterRecord, totalAmount, categories, amountDesc_selected, amountAsc_selected, dateDesc_selected, dateAsc_selected })
 
 
 })

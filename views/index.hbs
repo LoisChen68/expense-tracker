@@ -8,9 +8,20 @@
             <select onchange="form.submit()" class="form-select" name="category" id="category" aria-label=" category">
               <option value="">全部</option>
               {{#each categories}}
-              <option value="{{this._id}}" {{this.selected}}>{{this.name}}</option>
+              <option value="{{this.name}}" {{this.selected}}>{{this.name}}</option>
               {{/each}}
             </select>
+        </div>
+        {{!-- 排序 --}}
+        <div class="col">
+          <select onchange="form.submit()" class="form-select" name="sort" id="sort" aria-label=" sort">
+            <option value="">排序方式</option>
+            <option value="amountDesc" {{ amountDesc_selected}}>金額大->小</option>
+            <option value="amountAsc" {{amountAsc_selected}}>金額小->大</option>
+            <option value="dateDesc" {{dateDesc_selected}}>日期大->小</option>
+            <option value="dateAsc" {{dateAsc_selected}}>日期小->大</option>
+          </select>
+          </form>
         </div>
       </div>
       <p class="fw-bold fs-5">總金額：</p>
