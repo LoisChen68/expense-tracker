@@ -8,7 +8,7 @@
             <select onchange="form.submit()" class="form-select" name="category" id="category" aria-label=" category">
               <option value="">全部</option>
               {{#each categories}}
-              <option value="{{this.name}}">{{this.name}}</option>
+              <option value="{{this._id}}" {{this.selected}}>{{this.name}}</option>
               {{/each}}
             </select>
         </div>
