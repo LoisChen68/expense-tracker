@@ -9,10 +9,11 @@ router.get('/new', async (req, res) => {
   return res.render('new', { categories })
 })
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const user_id = req.user._id
-  const { name, date, amount } = req.body
-  return Record.create({ ...req.body, user_id })
+  const { name, date, category, amount } = req.body
+  const categoryData = await Category.findOne({ name: category }).lean()
+  await Record.create({ name, date, category_id: categoryData._id, amount, user_id })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
@@ -27,7 +28,7 @@ router.get('/:id/edit', async (req, res) => {
   res.render('edit', { record, categories })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   const user_id = req.user._id
   const _id = req.params.id
   const { name, date, amount } = req.body
