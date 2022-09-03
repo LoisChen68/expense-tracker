@@ -10,15 +10,15 @@ module.exports = app => {
   app.use(passport.session())
 
 
-  passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+  passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true }, (req, email, password, done) => {
     User.findOne({ email })
       .then(user => {
         if (!user) {
-          return done(null, false, { message: '該Email不存在' })
+          return done(null, false, { message: req.flash('warning_msg', `該使用者不存在`) })
         }
         return bcrypt.compare(password, user.password).then(isMatch => {
           if (!isMatch) {
-            return done(null, false, { message: 'Email 或 密碼 不正確' })
+            return done(null, false, { message: req.flash('warning_msg', `Email 或 密碼 不正確！`) })
           }
           return done(null, user)
         })
