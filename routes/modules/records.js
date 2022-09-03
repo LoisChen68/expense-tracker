@@ -18,17 +18,13 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:id/edit', async (req, res) => {
-  const categories = await Category.find().lean()
   const user_id = req.user._id
   const _id = req.params.id
-  return Record.findOne({ _id, user_id })
-    .lean()
-    .then(record => {
-      const date = record.date.toJSON().slice(0, 10)
-      record.date = date
-      res.render('edit', { record, categories })
-    })
-    .catch(error => console.log(error))
+  const categories = await Category.find().lean()
+  const record = await Record.findOne({ _id, user_id }).populate('category_id').lean()
+
+  record.date = record.date.toJSON().slice(0, 10)
+  res.render('edit', { record, categories })
 })
 
 router.put('/:id', (req, res) => {

@@ -20,4 +20,24 @@ router.get('/', async (req, res) => {
   res.render('index', { records, totalAmount, categories })
 })
 
+router.get('/category', async (req, res) => {
+  const category = req.query.category
+  const categories = await Category.find().lean()
+  const records = await Record
+    .find({ user_id: req.user._id })
+    .populate('category_id')
+    .lean()
+
+  const filterRecord = await records.filter(data => data.category_id.name.includes(category))
+
+  let totalAmount = filterRecord.reduce((total, record) => {
+    return total + Number(record.amount)
+  }, 0)
+
+  records.forEach(records => records.date = records.date.toLocaleDateString('zh-TW'))
+
+  res.render('index', { records: filterRecord, totalAmount, category, categories })
+
+
+})
 module.exports = router
