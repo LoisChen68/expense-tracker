@@ -1,5 +1,7 @@
 # 老爸的記帳本
+![Index page about expense-tracker](https://github.com/LoisChen68/expense-tracker/blob/main/public/img/%E5%AE%B6%E5%BA%AD%E8%A8%98%E5%B8%B3%E6%9C%AC%E7%99%BB%E5%85%A5%E7%95%AB%E9%9D%A2.jpg?raw=true)
 
+![Index page about expense-tracker](https://github.com/LoisChen68/expense-tracker/blob/main/public/img/%E5%AE%B6%E5%BA%AD%E8%A8%98%E5%B8%B3%E6%9C%AC%E9%A6%96%E9%A0%81.jpg?raw=true)
 
 # 介紹
 簡單實作記帳的網頁
