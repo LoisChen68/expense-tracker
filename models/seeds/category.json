@@ -1,26 +1,21 @@
 [
   {
-    "id": "1",
     "name": "家居物業",
     "icon": "fas fa-house"
   },
   {
-    "id": "2",
     "name": "交通出行",
     "icon": "fas fa-van-shuttle"
   },
   {
-    "id": "3",
     "name": "休閒娛樂",
     "icon": "fas fa-face-grin-beam"
   },
   {
-    "id": "4",
     "name": "餐飲食品",
     "icon": "fas fa-utensils"
   },
   {
-    "id": "5",
     "name": "其它",
     "icon": "fa-solid fa-pan"
   }

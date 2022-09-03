@@ -2,23 +2,21 @@ const express = require('express')
 const router = express.Router()
 
 const Record = require('../../models/record')
+const Category = require('../../models/category')
 
-router.get('/', (req, res) => {
-  const user_id = req.user._id
-  Record.find({ user_id })
+router.get('/', async (req, res) => {
+  const records = await Record
+    .find({ user_id: req.user._id })
+    .populate('category_id')
     .lean()
-    .then(records => {
 
-      let totalAmount = records.reduce((total, record) => {
-        return total + Number(record.amount)
-      }, 0)
+  let totalAmount = records.reduce((total, record) => {
+    return total + Number(record.amount)
+  }, 0)
 
-      records.forEach(records => records.date = records.date.toLocaleDateString('zh-TW'))
+  records.forEach(records => records.date = records.date.toLocaleDateString('zh-TW'))
 
-      res.render('index', { records, totalAmount }
-      )
-    })
-    .catch(error => console.log(error))
+  res.render('index', { records, totalAmount })
 })
 
 module.exports = router

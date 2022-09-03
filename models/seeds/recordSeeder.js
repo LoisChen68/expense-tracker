@@ -25,12 +25,12 @@ db.once('open', async () => {
     })
     await Promise.all(
       SEED_RECORD.map(async record => {
-        const categoryDate = categories.find(category => category.name === record.category_name)
+        const categoryData = categories.find(category => category.name === record.category_name)
         await Record.create({
           name: record.name,
           date: record.date,
           amount: record.amount,
-          category_id: categoryDate.id,
+          category_id: categoryData._id,
           user_id: userData._id
         })
       }))
